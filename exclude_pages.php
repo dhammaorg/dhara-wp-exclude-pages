@@ -89,7 +89,9 @@ function ep_exclude_pages( $pages ) {
  * @author Simon Wheatley
  **/
 function ep_ancestor_excluded( $page, $excluded_ids, $pages ) {
-	$parent = & ep_get_page( $page->post_parent, $pages );
+	// JJD 3/12/23 fix "only variables should be assigned by reference"
+	//$parent = & ep_get_page( $page->post_parent, $pages );
+	$parent = ep_get_page( $page->post_parent, $pages );
 	// Is there a parent?
 	if ( ! $parent )
 		return false;
